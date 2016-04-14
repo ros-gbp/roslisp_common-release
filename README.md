@@ -1,3 +1,35 @@
+## roslisp_common (kinetic) - 0.2.6-0
+
+The packages in the `roslisp_common` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release roslisp_common --track kinetic --rosdistro kinetic` on `Thu, 14 Apr 2016 10:53:07 -0000`
+
+These packages were released:
+- `actionlib_lisp`
+- `cl_tf`
+- `cl_tf2`
+- `cl_transforms`
+- `cl_transforms_stamped`
+- `cl_urdf`
+- `cl_utils`
+- `roslisp_common`
+- `roslisp_utilities`
+
+Version of package(s) in repository `roslisp_common`:
+
+- upstream repository: https://github.com/ros/roslisp_common.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `0.2.6-0`
+
+Versions of tools used:
+
+- bloom version: `0.5.21`
+- catkin_pkg version: `0.2.10`
+- rosdep version: `0.11.4`
+- rosdistro version: `0.4.5`
+- vcstools version: `0.1.38`
+
+
 ## roslisp_common (jade) - 0.2.6-0
 
 The packages in the `roslisp_common` repository were released into the `jade` distro by running `/usr/bin/bloom-release roslisp_common --track jade --rosdistro jade` on `Thu, 14 Apr 2016 09:40:44 -0000`
