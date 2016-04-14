@@ -1,0 +1,12 @@
+Source: ros-indigo-cl-urdf
+Section: misc
+Priority: extra
+Maintainer: Georg Bartels <georg.bartels@cs.uni-bremen.de>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-catkin, ros-indigo-cl-transforms, ros-indigo-roslisp
+Homepage: http://ros.org/wiki/cl_urdf
+Standards-Version: 3.9.2
+
+Package: ros-indigo-cl-urdf
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-cl-transforms, ros-indigo-roslisp
+Description: cl_urdf
