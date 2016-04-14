@@ -1,12 +1,16 @@
 (in-package :cl-transforms)
 
 (defclass transform ()
-  ((translation :initarg :translation :reader translation :type point)
-   (rotation :initarg :rotation :reader rotation :type gen-quaternion))
+  ((translation :initarg :translation :initform (make-identity-vector)
+                :reader translation :type point)
+   (rotation :initarg :rotation :initform (make-identity-rotation)
+             :reader rotation :type gen-quaternion))
   (:documentation "Represents a rigid affine transform of R^3, consisting of a rotation (represented as a normalized-quaternion) and translation (represented as a 3d-vector).  Object should be treated as immutable."))
 
-(defun make-transform (translation rotation)
-  (make-instance 'transform :translation translation :rotation rotation))
+(defun make-transform (translation rotation &key (validate-args :warn))
+  (make-instance 'transform
+    :translation translation :rotation rotation
+    :validate-args validate-args))
 
 (defun make-identity-transform ()
   (make-transform
@@ -50,6 +54,10 @@
             (make-transform (v+ (translation trans) (rotate (rotation trans) (translation prev)))
                             (q* (rotation trans) (rotation prev))))
           (reverse transforms)))
+
+(defun transform-diff (transform-To transform-From)
+  "Return the transform that, when left-multiplied, will convert transform-From into transform-To."
+  (transform* transform-To (transform-inv transform-From)))
 
 (defun transform-point (trans p)
   (declare (type transform trans) (type point p))
