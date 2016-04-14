@@ -1,4 +1,4 @@
-;;; Copyright (c) 2014, Jannik Buckelo <jannikbu@cs.uni-bremen.de>
+;;; Copyright (c) 2015, Georg Bartels <georg.bartels@cs.uni-bremen.de>
 ;;; All rights reserved.
 ;;;
 ;;; Redistribution and use in source and binary forms, with or without
@@ -26,37 +26,26 @@
 ;;; ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 ;;; POSSIBILITY OF SUCH DAMAGE.
 
-(in-package :actionlib-lisp)
+(in-package :cl-tf2)
 
-(defparameter *simple-states*
-  (make-states '((:done (:send-goal :pending))
-                 (:pending (:active :active
-                            :preempting :active
-                            :lost :done
-                            :receive :done))
-                 (:active (:recalling :pending
-                           :lost :done
-                           :receive :done)))))
+(defclass transform-broadcaster ()
+  ((publisher :initarg :publisher
+              :reader publisher)
+   (send-transform-callbacks :initform '())
+   (send-transform-callbacks-enabled :initform nil)))
 
-(defclass simple-comm-state-machine (comm-state-machine)
-  ((simple-stm :initform (make-instance 'state-machine 
-                                        :current-state (getf *simple-states* :pending)
-                                        :states *simple-states*)
-               :accessor simple-stm))
-  (:documentation "Like the comm-state-machine but it includes another state machine
-                   that summarizes the other states into pending, active and done."))
+(defun make-transform-broadcaster (&key (topic "/tf") (static nil))
+  "Returns a publisher that can be used with send-transform. The broadcasting
+topic can be altered through the keyword `topic'."
+  (make-instance 'transform-broadcaster
+    :publisher (advertise topic "tf2_msgs/TFMessage" :latch static)))
 
-(defmethod transition-to ((csm simple-comm-state-machine) signal)
-  "Processes the signal and updates the state-machine and simple-state-machine.
-   If the state of the simple state-machine changes the transition callback is
-   called."
-   (if (and (or (process-signal (stm csm) signal)
-                (process-signal (simple-stm csm) signal))
-            (transition-cb csm))
-       (funcall (transition-cb csm))))
-
-(defmethod comm-state ((csm simple-comm-state-machine))
-  "Returns the name of the current state of the simple-comm-state-machine
-   as a symbol"
-  (name (get-current-state (simple-stm csm))))
-  
+(defgeneric send-transform (broadcaster &rest transforms)
+  (:documentation "Uses `broadcaster' to send several stamped `transforms' to TF.")
+  (:method ((broadcaster transform-broadcaster) &rest transforms)
+    ;; (ros-info (broadcaster) "sending ~a -> ~a (at ~a)~%"
+    ;;           (frame-id (first transforms))
+    ;;           (child-frame-id (first transforms))
+    ;;           (stamp (car transforms)))
+    (publish (slot-value broadcaster 'publisher)
+             (make-message "tf2_msgs/TFMessage" :transforms (to-msg transforms)))))
