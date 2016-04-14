@@ -1,4 +1,4 @@
-;;; Copyright (c) 2013, Georg Bartels <georg.bartels@cs.uni-bremen.de>
+;;; Copyright (c) 2014, Jannik Buckelo <jannikbu@cs.uni-bremen.de>
 ;;; All rights reserved.
 ;;;
 ;;; Redistribution and use in source and binary forms, with or without
@@ -26,20 +26,12 @@
 ;;; ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 ;;; POSSIBILITY OF SUCH DAMAGE.
 
-(defsystem "cl-tf2"
-  :author "Georg Bartels <georg.bartels@cs.uni-bremen.de>"
-  :license "BSD"
-  :description "Common Lisp implementation of a TF2 client library."
+(in-package :cl-user)
 
-  :depends-on (roslisp cl-transforms actionlib tf2_msgs-msg geometry_msgs-msg std_msgs-msg)
-  :components
-  ((:module "src"
-            :components
-            ((:file "package")
-             (:file "errors" :depends-on ("package"))
-             (:file "datatypes" :depends-on ("package"))
-             (:file "message-conversions" :depends-on ("package" "datatypes"))
-             (:file "buffer-interface" :depends-on ("package"))
-             (:file "buffer-client" :depends-on ("package" "errors" "datatypes"
-                                                           "message-conversions"
-                                                           "buffer-interface"))))))
+(defpackage :actionlib-lisp
+  (:use :cl :roslisp :actionlib_msgs-msg :sb-thread)
+  (:export :cancel :cancel-all-goals :cancel-at-before-time :cancel-goal 
+           :comm-state :goal-id :goal-status :is-connected 
+           :make-action-goal-msg :make-simple-action-client :simple-action-client :result
+           :send-goal :send-goal-and-wait :state :stop-tracking-goal :terminal-state
+           :wait-for-result :wait-for-server))
