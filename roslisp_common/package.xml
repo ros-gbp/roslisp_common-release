@@ -1,6 +1,6 @@
 <package>
   <name>roslisp_common</name>
-  <version>0.2.3</version>
+  <version>0.2.6</version>
   <description>
     Common libraries to control ROS based robots. This stack contains
     an implementation of actionlib (client and server) in Common Lisp,
@@ -21,8 +21,11 @@
 
   <run_depend>actionlib_lisp</run_depend> 
   <run_depend>cl_tf</run_depend> 
+  <run_depend>cl_tf2</run_depend> 
   <run_depend>cl_transforms</run_depend> 
+  <run_depend>cl_transforms_stamped</run_depend> 
   <run_depend>cl_utils</run_depend> 
+  <run_depend>cl_urdf</run_depend>
   <run_depend>roslisp_utilities</run_depend> 
 
   <export>
