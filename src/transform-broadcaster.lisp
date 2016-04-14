@@ -1,4 +1,4 @@
-;;; Copyright (c) 2013, Georg Bartels <georg.bartels@cs.uni-bremen.de>
+;;; Copyright (c) 2015, Georg Bartels <georg.bartels@cs.uni-bremen.de>
 ;;; All rights reserved.
 ;;;
 ;;; Redistribution and use in source and binary forms, with or without
@@ -28,14 +28,24 @@
 
 (in-package :cl-tf2)
 
-(defgeneric can-transform (tf target-frame source-frame &optional source-time timeout
-                                                          target-time fixed-frame)
-  (:documentation "Queries whether 'tf' is aware of a transform from 'source-frame' to 'target-frame'.
+(defclass transform-broadcaster ()
+  ((publisher :initarg :publisher
+              :reader publisher)
+   (send-transform-callbacks :initform '())
+   (send-transform-callbacks-enabled :initform nil)))
 
-Optionally, one can specify a 'timeout' for the query. 'source-time' and 'target-time' specify at which time 'target-frame' and 'source-frame' should be evaluated. 'fixed-frame' denotes the frame in which the transform is assumed to be constant over time. Note: If 'target-time' is specified once also needs to specify 'fixed-frame' to avoid a run-time error."))
+(defun make-transform-broadcaster (&key (topic "/tf") (static nil))
+  "Returns a publisher that can be used with send-transform. The broadcasting
+topic can be altered through the keyword `topic'."
+  (make-instance 'transform-broadcaster
+    :publisher (advertise topic "tf2_msgs/TFMessage" :latch static)))
 
-(defgeneric lookup-transform (tf target-frame source-frame &optional source-time timeout
-                                                             target-time fixed-frame)
-  (:documentation "Queries 'tf' for the transform from 'source-frame' to 'target-frame'.
-
-Optionally, one can specify a 'timeout' for the query. 'source-time' and 'target-time' specify at which time 'target-frame' and 'source-frame' should be evaluated. 'fixed-frame' denotes the frame in which the transform is assumed to be constant over time. Note: If 'target-time' is specified once also needs to specify 'fixed-frame' to avoid a run-time error."))
+(defgeneric send-transform (broadcaster &rest transforms)
+  (:documentation "Uses `broadcaster' to send several stamped `transforms' to TF.")
+  (:method ((broadcaster transform-broadcaster) &rest transforms)
+    ;; (ros-info (broadcaster) "sending ~a -> ~a (at ~a)~%"
+    ;;           (frame-id (first transforms))
+    ;;           (child-frame-id (first transforms))
+    ;;           (stamp (car transforms)))
+    (publish (slot-value broadcaster 'publisher)
+             (make-message "tf2_msgs/TFMessage" :transforms (to-msg transforms)))))
