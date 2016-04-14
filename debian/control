@@ -1,0 +1,12 @@
+Source: ros-kinetic-cl-urdf
+Section: misc
+Priority: extra
+Maintainer: Georg Bartels <georg.bartels@cs.uni-bremen.de>
+Build-Depends: debhelper (>= 9.0.0), ros-kinetic-catkin, ros-kinetic-cl-transforms, ros-kinetic-roslisp
+Homepage: http://ros.org/wiki/cl_urdf
+Standards-Version: 3.9.2
+
+Package: ros-kinetic-cl-urdf
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kinetic-cl-transforms, ros-kinetic-roslisp
+Description: cl_urdf
