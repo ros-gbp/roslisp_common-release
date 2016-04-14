@@ -1,0 +1,12 @@
+Source: ros-jade-cl-tf2
+Section: misc
+Priority: extra
+Maintainer: Georg Bartels <georg.bartels@cs.uni-bremen.de>
+Build-Depends: debhelper (>= 9.0.0), ros-jade-actionlib-lisp, ros-jade-catkin, ros-jade-cl-transforms-stamped, ros-jade-cl-utils, ros-jade-roslisp, ros-jade-tf2-msgs, sbcl
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-jade-cl-tf2
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jade-actionlib-lisp, ros-jade-cl-transforms-stamped, ros-jade-cl-utils, ros-jade-roslisp, ros-jade-tf2-msgs, sbcl
+Description: Client implementation to use TF2 from Common Lisp
