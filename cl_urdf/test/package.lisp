@@ -1,4 +1,4 @@
-;;; Copyright (c) 2013, Georg Bartels <georg.bartels@cs.uni-bremen.de>
+;;; Copyright (c) 2014, Jannik Buckelo <jannikbu@cs.uni-bremen.de>
 ;;; All rights reserved.
 ;;;
 ;;; Redistribution and use in source and binary forms, with or without
@@ -10,8 +10,8 @@
 ;;; notice, this list of conditions and the following disclaimer in the
 ;;; documentation and/or other materials provided with the distribution.
 ;;; * Neither the name of the Institute for Artificial Intelligence/
-;;; Universitaet Bremen nor the names of its contributors may be used to
-;;; endorse or promote products derived from this software without specific
+;;; Universitaet Bremen nor the names of its contributors may be used to 
+;;; endorse or promote products derived from this software without specific 
 ;;; prior written permission.
 ;;;
 ;;; THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
@@ -26,21 +26,7 @@
 ;;; ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 ;;; POSSIBILITY OF SUCH DAMAGE.
 
-(in-package :cl-tf2)
+(in-package :cl-user)
 
-(defclass header ()
-  ((frame-id :initarg :frame-id :reader frame-id :type string)
-   (stamp :initarg :stamp :reader stamp :type float)))
-
-(defclass stamped-transform ()
-  ((header :initarg :header :reader header)
-   (transform :initarg :transform :reader transform)
-   (child-frame-id :initarg :child-frame-id :reader child-frame-id :type string)))
-
-(defun make-stamped-transform (frame-id child-frame-id stamp transform)
-  (make-instance 'stamped-transform
-                 :header (make-instance 'header
-                                        :frame-id frame-id
-                                        :stamp stamp)
-                 :child-frame-id child-frame-id
-                 :transform transform))
+(defpackage cl-urdf-test
+  (:use :cl :lisp-unit :cl-urdf))
