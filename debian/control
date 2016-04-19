@@ -1,0 +1,12 @@
+Source: ros-jade-cl-transforms-stamped
+Section: misc
+Priority: extra
+Maintainer: Lorenz Moesenlechner <moesenle@cs.tum.edu>
+Build-Depends: debhelper (>= 9.0.0), ros-jade-catkin, ros-jade-cl-transforms, ros-jade-geometry-msgs, ros-jade-roslisp, ros-jade-std-msgs, sbcl
+Homepage: http://ros.org/wiki/cl_transforms_stamped
+Standards-Version: 3.9.2
+
+Package: ros-jade-cl-transforms-stamped
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jade-cl-transforms, ros-jade-geometry-msgs, ros-jade-roslisp, ros-jade-std-msgs, sbcl
+Description: Implementation of TF datatypes
