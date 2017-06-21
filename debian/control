@@ -1,0 +1,12 @@
+Source: ros-lunar-cl-tf2
+Section: misc
+Priority: extra
+Maintainer: Georg Bartels <georg.bartels@cs.uni-bremen.de>
+Build-Depends: debhelper (>= 9.0.0), ros-lunar-catkin
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-lunar-cl-tf2
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lunar-actionlib-lisp, ros-lunar-cl-transforms-stamped, ros-lunar-cl-utils, ros-lunar-roslisp, ros-lunar-tf2-msgs
+Description: Client implementation to use TF2 from Common Lisp
