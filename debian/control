@@ -1,0 +1,13 @@
+Source: ros-lunar-roslisp-common
+Section: misc
+Priority: extra
+Maintainer: Lorenz Moesenlechner <moesenle@cs.tum.edu>
+Build-Depends: debhelper (>= 9.0.0), ros-lunar-catkin
+Homepage: http://ros.org/wiki/roslisp_common
+Standards-Version: 3.9.2
+
+Package: ros-lunar-roslisp-common
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lunar-actionlib-lisp, ros-lunar-cl-tf, ros-lunar-cl-tf2, ros-lunar-cl-transforms, ros-lunar-cl-transforms-stamped, ros-lunar-cl-urdf, ros-lunar-cl-utils, ros-lunar-roslisp-utilities
+Description: Common libraries to control ROS based robots.
+ This stack contains an implementation of actionlib (client and server) in Common Lisp, a transformation library and an implementation of tf in Common Lisp.
