@@ -1,0 +1,13 @@
+Source: ros-indigo-actionlib-lisp
+Section: misc
+Priority: extra
+Maintainer: Gayane Kazhoyan <kazhoyan@cs.uni-bremen.de>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-catkin
+Homepage: http://wiki.ros.org/actionlib_lisp
+Standards-Version: 3.9.2
+
+Package: ros-indigo-actionlib-lisp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-actionlib-msgs, ros-indigo-cl-utils, ros-indigo-message-runtime, ros-indigo-roslisp
+Description: actionlib_lisp is a native implementation of the famous actionlib in Common Lisp.
+ It provides a client and a simple server.
