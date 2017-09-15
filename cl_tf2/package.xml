@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <package>
   <name>cl_tf2</name>
-  <version>0.2.9</version>
+  <version>0.2.10</version>
   <description>
     Client implementation to use TF2 from Common Lisp
   </description>
 
-  <author email="georg.bartels@cs.uni-bremen.de">Georg Bartels</author>
-  <author email="lisca@cs.uni-bremen.de">Gheorghe Lisca</author>
+  <author>Georg Bartels</author>
+  <author>Gheorghe Lisca</author>
 
+  <maintainer email="kazhoyan@cs.uni-bremen.de">Gayane Kazhoyan</maintainer>
   <maintainer email="georg.bartels@cs.uni-bremen.de">Georg Bartels</maintainer>
-  <maintainer email="lisca@cs.uni-bremen.de">Gheorghe Lisca</maintainer>
 
   <license>BSD</license>
 
