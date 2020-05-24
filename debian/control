@@ -1,0 +1,12 @@
+Source: ros-kinetic-cl-tf2
+Section: misc
+Priority: optional
+Maintainer: Gayane Kazhoyan <kazhoyan@cs.uni-bremen.de>
+Build-Depends: debhelper (>= 9.0.0), ros-kinetic-catkin
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-kinetic-cl-tf2
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kinetic-actionlib-lisp, ros-kinetic-cl-transforms-stamped, ros-kinetic-cl-utils, ros-kinetic-roslisp, ros-kinetic-tf2-msgs
+Description: Client implementation to use TF2 from Common Lisp
