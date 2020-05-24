@@ -1,0 +1,12 @@
+Source: ros-melodic-cl-tf2
+Section: misc
+Priority: optional
+Maintainer: Gayane Kazhoyan <kazhoyan@cs.uni-bremen.de>
+Build-Depends: debhelper (>= 9.0.0), ros-melodic-catkin
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-melodic-cl-tf2
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-melodic-actionlib-lisp, ros-melodic-cl-transforms-stamped, ros-melodic-cl-utils, ros-melodic-roslisp, ros-melodic-tf2-msgs
+Description: Client implementation to use TF2 from Common Lisp
