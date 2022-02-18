@@ -1,0 +1,12 @@
+Source: ros-noetic-cl-urdf
+Section: misc
+Priority: optional
+Maintainer: Gayane Kazhoyan <kazhoyan@cs.uni-bremen.de>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin
+Homepage: http://ros.org/wiki/cl_urdf
+Standards-Version: 3.9.2
+
+Package: ros-noetic-cl-urdf
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-cl-transforms, ros-noetic-roslisp
+Description: cl_urdf
