@@ -1,0 +1,12 @@
+Source: ros-noetic-cl-tf2
+Section: misc
+Priority: optional
+Maintainer: Gayane Kazhoyan <kazhoyan@cs.uni-bremen.de>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-noetic-cl-tf2
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-actionlib-lisp, ros-noetic-cl-transforms-stamped, ros-noetic-cl-utils, ros-noetic-roslisp, ros-noetic-tf2-msgs
+Description: Client implementation to use TF2 from Common Lisp
