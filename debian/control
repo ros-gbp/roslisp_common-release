@@ -1,0 +1,13 @@
+Source: ros-noetic-roslisp-common
+Section: misc
+Priority: optional
+Maintainer: Gayane Kazhoyan <kazhoyan@cs.uni-bremen.de>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin
+Homepage: http://ros.org/wiki/roslisp_common
+Standards-Version: 3.9.2
+
+Package: ros-noetic-roslisp-common
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-actionlib-lisp, ros-noetic-cl-tf, ros-noetic-cl-tf2, ros-noetic-cl-transforms, ros-noetic-cl-transforms-stamped, ros-noetic-cl-urdf, ros-noetic-cl-utils, ros-noetic-roslisp-utilities
+Description: Common libraries to control ROS based robots.
+ This stack contains an implementation of actionlib (client and server) in Common Lisp, a transformation library and an implementation of tf in Common Lisp.
