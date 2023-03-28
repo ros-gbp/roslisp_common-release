@@ -39,8 +39,8 @@
    geometry box size cylinder radius length cylinder-length sphere
    mesh filename scale
    material color texture
-   visual
-   collision
+   visual visuals
+   collision collisions
    link from-joint to-joints
    robot links joints root-link materials
    urdf-type-not-supported urdf-attribute-not-supported urdf-malformed
